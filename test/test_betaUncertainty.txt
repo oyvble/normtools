@@ -1,0 +1,48 @@
+#site=1;i=1;o1=0;o2=0;n=100000
+beta_uncertainty = function(meth,site,i, o1=0, o2=0, n=100000)  {
+  #input is object from ewastools::read_idats
+  
+  if(is.numeric(site)) {
+    siteInd = site
+  } else {
+    siteInd = which(meth$manifest$probe_id==site)
+  }
+  
+  #Un-Methylated  
+  U_mean = meth$U[siteInd,i] #Mean
+  U_sd = meth$T[siteInd,i] #SD
+  U_n = meth$V[siteInd,i] # beadCounts
+  U_sem =  U_sd/sqrt(U_n)
+
+  #Methylated  
+  M_mean = meth$M[siteInd,i] #Mean
+  M_sd = meth$S[siteInd,i] #SD
+  M_n = meth$N[siteInd,i] #BeadCounts
+  M_sem =  M_sd/sqrt(M_n)
+  
+  #TOTAL (M+U)
+  T_mean = M_mean + U_mean + o2
+  T_sem = sqrt(M_sem^2 + U_sem^2) #standard dev of total
+  
+  sitename = meth$manifest$probe_id[siteInd]
+  samplename = meth$meta[i,1]
+    
+  #obtain uncertinty about beta-values (based on uncertainty of methylated,unmethylated)
+  M = rnorm(n, M_mean, M_sem)
+  U = rnorm(n, U_mean, U_sem) 
+  B = (M+o1)/(M+U+o2)
+  hist(B,breaks=30,probability=T,main=sitename);mtext(samplename)
+
+  #Specify COV and MEAN
+  COV = diag(c(M_sem,T_sem))^2
+  COV[1,2] <- COV[2,1] <- M_sem^2
+  #determinant(COV,log=T)
+  MU = c(M_mean, T_mean) #mean for each
+  
+  hist(B,breaks=30,probability=T,main=sitename);mtext(samplename)
+  
+  z = seq(min(B),max(B),l=1000)
+  lines(z,f_z(z,MU,COV))
+
+}
+  

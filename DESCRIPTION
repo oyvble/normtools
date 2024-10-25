@@ -1,0 +1,23 @@
+Package: normtools
+Type: Package
+Title: Reimplementation of normalisation tools
+Version: 0.6
+Date: 2021-06-10
+Author: Oyvind Bleka
+Maintainer: Oyvind Bleka <oyvble@hotmail.com>
+Description: Implementations for running normalisation tools faster.
+License: GPL(>=2)
+LinkingTo: Rcpp,RcppArmadillo
+Imports: Rcpp
+Depends: foreach
+Suggests: 
+	Rfast,
+	robustbase,
+    parallel,
+	doParallel,
+    minfi,
+	ewastools,
+    ENmix,
+	IlluminaHumanMethylation450kmanifest,
+    testthat (>= 2.1.0)
+RoxygenNote: 7.1.0

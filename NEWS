@@ -1,0 +1,42 @@
+
+v0.6 (10-06-21)
+----------------
+- New function: 
+ -> anchorReg: Performs anchor regression 
+
+ - Changes in doQC: 
+   -> Criterion for checking betadistr changed (threshold=0.1/0.5 for each type).
+   -> In control metric plots: Also show failed controls which has NA on one of the axes.
+
+v0.5 (02-06-21)
+----------------
+- New function:
+ -> getZscore: Obtaining standardized variables (wrt CENTER and SCALE). Possible with robust version (MEDIAN/MAD)
+- Extended function:
+ -> ComBat2 now includes possible to specify a batch as reference 
+
+v0.4 (12-05-21)
+----------------
+- New functions:
+
+ -> Very fast Linear modeling: margCovariateModel and margResponseModel
+ -> scaling: More general function for fast scaling (also support robustScaling).
+ -> rowFivenum: Fast row or column-wise operation of the five function.
+ -> QChelpfunctions: Includes alot of useful functions used for quality control:
+	- ewastools_detectionP
+	- ewastools_detectionP.neg
+	- sesame_detectionPEcdf
+	- plotControlMetrics 
+	- getPCAoutlier 
+	- getPCAoutlier_control
+	- showQC
+	- wm_outlyx 
+	- wm_qual
+	- wm_pwod
+	- wm_bscon 
+	- sesame_bisConversionControl
+    - checkBeadCounts 
+
+v0.3 (25-03-21)
+----------------
+- Included function estNmodes to efficiently estimate number of modes per row or col in a large datamatrix.
