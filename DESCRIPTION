@@ -6,6 +6,7 @@ Date: 2021-06-10
 Author: Oyvind Bleka
 Maintainer: Oyvind Bleka <oyvble@hotmail.com>
 Description: Implementations for running normalisation tools faster.
+NeedsCompilation: yes
 License: GPL(>=2)
 LinkingTo: Rcpp,RcppArmadillo
 Imports: Rcpp
@@ -20,4 +21,4 @@ Suggests:
     ENmix,
 	IlluminaHumanMethylation450kmanifest,
     testthat (>= 2.1.0)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.3.2

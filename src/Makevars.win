@@ -1,2 +1,2 @@
-PKG_LIBS = -lRlapack -lgomp -lRblas
-PKG_CXXFLAGS = -Wall -std=gnu++11 -O3 -march=native -fopenmp -mfpmath=sse -msse2 -mstackrealign  
+PKG_LIBS = $(BLAS_LIBS) $(LAPACK_LIBS)
+PKG_CXXFLAGS = -Wall -std=c++11 -O3
